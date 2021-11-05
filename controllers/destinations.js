@@ -1,4 +1,5 @@
 import { Destination } from '../models/destination.js'
+import { Flight } from '../models/flight.js'
 
 function newDestination(req, res) {
   Destination.find({}, function (err, destinations) {
@@ -11,12 +12,22 @@ function newDestination(req, res) {
 
 
 function create(req, res) {
-  Destination.create(req.body, function (err, destinations)
-  
-  {
-    res.redirect('/destinations/new')
+  console.log(req.body)
+  Destination.create(req.body, function (err, destination) {
+    if (err) {
+      console.log(err)
+      res.redirect('/destinations/new') 
+    }
+    else {
+      res.redirect('/destinations/new')
+    }
   })
 }
+
+
+
+  
+  
 
 
 

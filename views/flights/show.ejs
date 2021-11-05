@@ -14,7 +14,8 @@
     <div>Departure Date/Time: </div>
     <div><%= flight.departs %></div>
   </section>
-</section>
+
+<section>
 
 <h2>Tickets</h2>
   <form 
@@ -32,6 +33,10 @@
 
   <button type="submit">Add Ticket</button>
   </form>
+
+</section>
+
+<section>
 
 <% if (flight.tickets.length) { %>
     <table>
@@ -53,11 +58,25 @@
   <% } else { %>
     <h3>No Tickets Set</h3>
   <% } %>
+</section>
 
+<section>
+  <ul>
+    <%- flight.destinations.map(destination =>
+    `<li>${destination.destination} </li>`).join('') %>
+  </ul>
+    <form id="add-destinations" action="/flights/<%= flight._id%>/destinations" method="POST">
+    <select name="destinationId"> 
+    <% destinations.map(function(destination) {%>
+    <option value="<%=destination._id%>"><%=destination.destination%></option> 
+    <% }) %>
+    </select>
+      <button type ="submit">Add destination</button>
+    </section>
+    </form>
 
 
 </main>
-
 
   
 <%- include('../partials/footer') %>
