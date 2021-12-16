@@ -1,2 +1,2 @@
-# mongoose-flights-lab-1-2-3
+# mongoose-flights
 A short project to track flights, tickets, and destinations. Built to learn the MEN stack. 
